@@ -1,0 +1,81 @@
+fragments are the pixels that make up each triangle
+
+verteces are the corners of the triangles
+
+the triangles make up each shape as it is rendered. they are the smallest shapes which is why they are used by the processor to render.
+
+hierarchy > scene > right click > create > 3d object > quad
+
+disable global volume
+
+assets > right click > create > Shader Graph > URP > Unlit Shader graph
+
+open shader editor > right click > create node > search > UV
+
+connect Out on UV to Base Color on Fragment
+
+save asset
+
+assets > right click > create > material > shader dropdown(at the top) > choose shader that you just made
+
+drag material from assets to quad in scene
+
+ambientcg.com has textures
+
+Drag 2k png into assets folder
+
+open the shader editor on the shader you made
+
+right click > create node > search > sample texture 2d
+
+click on the circle next to "texture none" to the left of the sample texture 2d node and choose the text from ambientcg.com 
+
+connect the Sample Texture 2D RGBA output to the fragment Base Color and disconnect the UV.
+
+Save asset
+
+Shader - A shader is the 
+
+Material - A material is like a prefab; it is a copy of a shader so to speak.
+
+UV textures go from 0-1
+clockwise from top left, (0,1), (1,1), (1,0), (0,0)
+
+Create variables in the shader editor usign the ui element that is labeled with your shader name
+
+Create a Texture2D variable called MainTex and connect it to the Texture input on Sample Texture 2D. In the Unity editor for the Material, set the variable MainTex to the texture from AmbientCG.com
+
+Right click in shader editor > create node > search > tiling and offset
+
+connect tiling and offset out to Sample Texture 2D UV input
+
+set tiling to above 0 to zoom out. Note the UV coordinates above.
+
+this node will allow the texture to scroll.
+
+Create a variable called Tiling and connect it to the Tiling input on Tiling And Offset
+
+Right click > create node > search > Time
+
+connect the Time output to the Offset input on Tiling and Offset
+
+This will make the texture scroll as the time from the start of the program increases
+
+To slow down the scroll, right click in the shader editor > create node > search > multiply
+
+set the output of multiply to offset input on Tiling and Offset. Create a variable called ScrollSpeed of type Vector2 and connect it to the A input on Multiply. Connect the Time output to the B input on Multiply.
+
+Set the X value to 0 and Y to any positive number to scroll upwards.
+
+Set the X value to any positive number and the Y to 0 to scroll right.
+
+Make the number negative to do the opposite.
+
+
+Create a multiply node and a variable of type Color. Connect the RGBA output of Sample Texture 2D to the B input of Multiply and connect the Color variable to the A input of Multiply. Connect the output of Multiply to the Base Color input of Fragment. In unity, setting the Color variable to a color will change the color of the material texture.
+
+
+To add noise, create a Gradient Noise node, a Multiply node and an Add node, Connect the output of the Gradient Noise node to one input of the Multiply node and set the other input to a low number such as 0.1 to reduce the strength. Connect the output of the Multiply node to the A input of the Add node and the output of the Tiling and offset node to the B input of the Add node. Connect the output of the Add node to the UV input of the Sample Texture 2D node. This will add the gradient to the scrolling effect and cause distortion.
+
+
+To create stripes, create a UV node, a split node, a multiply node, a floor node, and a modulo node. Connect the output of the UV node to the input of the split node. The split node will separate the 4 values of the UV. Connect the R output of the Split node to the A input of the Multiply node and set the B input of the Multiply node to any number. Higher numbers will result in more stripes. Connect the output of the Multiply to the input of the Floor, and the output of the floor to the A input of the Modulo. Set the B input of the Modulo to any number. 1 is completely black and 0 is pink. To add color to it, create a Lerp node. Connect the output of the Modulo node to the T input of the Lerp node. Create two color variables. Connect them to the A and B inputs of the Lerp node. Connect the output of the Lerp node to the Base Color input of the Fragment.

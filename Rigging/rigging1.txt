@@ -1,0 +1,42 @@
+
+
+inverse kinematic
+
+
+press space for orthogonal view
+
+menu bar > skeleton > ::::::::::::::::::::::::::::::::::: to pop out
+
+never drag joints into place, redraw them where they belong
+
+menu bar > skeleton > create joints > click on grid > press y key
+to make individual joints without connecting them
+
+select the root joint(original one in chain) > right click > set prefered angle
+
+select the root joint > right click > assume prefered angle to reset the skeleton to the prefered orientation
+
+right click on nurbs circle > control vertex  to manipulate circle verteces
+
+alt b to change background color
+
+
+subdivide
+
+wireframe on shaded
+
+put locators on bottom, middle, top
+
+create joint > hold v click each locator > delete locators
+
+skin menu > ::::::::::::::::::::::::::::::::::: > bind skin(press square for options) > bind method : Geodesic Voxel and set max influences to the amount of joints
+
+right click > paint skin weights tool  to see grayscale representation of how bend weighting
+
+
+display > animation > joint size
+
+
+
+
+

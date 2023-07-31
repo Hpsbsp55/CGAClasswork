@@ -1,0 +1,35 @@
+coupling is when two classes depend on each other. Getting rid of one class ruins the other. Don't do this.
+
+property - shorthand version of getter and setter methods which is built into C#:
+
+public *DATATYPE* *NAME* {
+	get { return *VARIABLE*; }
+	set { *VARIABLE* = value; }
+}
+
+internal - keyword similar to public. Look into later.
+
+encapsulation - 
+
+hud = FindObjectOfType<HUD>(); //not the best way because there may be multiple i.e. in multiplayer. Also a slow method. Starts at the root directory of the scene and checks every GameObject and all of their components
+hud = GameObject.Find("HUD").GetComponent<HUD>(); //won't work because the object containing the script is called Canvas. Limit how often this happens.
+
+static method - a method which exists independent of any instance of the class object. Meaning, regardless of how many times the script exists in the scene, the method will work separately. Static variables work similarly, they are available to all methods and the value is the same for all instances of the script.
+
+Awake() is called before Start()
+
+to make an Instance, the syntax is
+
+private static *CLASSNAME/DATATYPE* *VAR NAME*;
+public static *CLASSNAME/DATATYPE* Instance => *VAR NAME*;
+private void Awake() {
+	instance = this;
+}
+
+an instance is 
+
+
+
+
+
+
